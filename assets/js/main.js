@@ -29,7 +29,7 @@ const names = people.map(person => ` ${person.name}`);
 
 const senior = people.filter(({ role }) => role === "senior");
 
-const message = `Hay ${people.length} personas en el ${teamName} team.\nSus nombres son ${names}.\n${senior.length} de ellos son ${senior[0].role} con experiencia.`
+const message = `Hay ${people.length} personas en el ${teamName} team.\nSus nombres son${names}.\n${senior.length} de ellos son ${senior[0].role} con experiencia.`
 
 console.log('Ejercico _1  ->', message)
 
@@ -57,21 +57,26 @@ const myObjects = [
     { x: 0, y: 0, width: 10, height: 5 }
 ]
 
-const detectCollision = (objects, point) => {
+// const detectCollision = (objects, point) => {
 
-    for (let i = 0; i < objects.length; i++) {
-        let object = objects[i]
-        if (point.x >= object.x && point.x <= object.x + object.width &&
-            point.y >= object.y && point.y <= object.y + object.height)
-            return object
-    }
+//     for (let i = 0; i < objects.length; i++) {
+//         let object = objects[i]
+//         if (point.x >= object.x && point.x <= object.x + object.width &&
+//             point.y >= object.y && point.y <= object.y + object.height)
+//             return object
+//     }
 
-    //Comentar el for y colocar acá la respuesta
+//     //Comentar el for y colocar acá la respuesta
 
-    // const { x: pointX, y: pointY } = point
-    // return true
+//     // const { x: pointX, y: pointY } = point
+//     // return true
 
-}
+// }
+const detectCollision = (objects, { x: pointX, y: pointY }) =>
+    objects.find(({ x, y, width, height }) =>
+        pointX >= x && pointX <= x + width && pointY >= y && pointY <= y + height
+    ) || false;
+
 
 console.log('Ejercico _2  ->', detectCollision(myObjects, { x: 4, y: 2 }))
 
